@@ -91,9 +91,9 @@ class UserAccount extends CI_Controller {
 	
 
 	public function updateDetails()
-	{	$data=$this->session->userdata('user_id');
+	{	$d=$this->session->userdata('user_id');
 
-		if($data==0)
+		if($d==0)
 		{
 			header('location:'.base_url().'Login1/index');
 		}

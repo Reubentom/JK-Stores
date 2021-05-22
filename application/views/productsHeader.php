@@ -86,10 +86,7 @@
                                             <a href="<?php echo base_url();?>login1/logout" >logout <i class="fa fa"></i></a>
                                            
                                         </li>
-                                        <li class="has-dropdown">
-                                            <a href="<?php echo base_url();?>login1/logout" >Feedback <i class="fa fa"></i></a>
-                                           
-                                        </li>
+                                       
                                         
                                     </ul>
                                 </nav>

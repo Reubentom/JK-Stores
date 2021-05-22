@@ -272,14 +272,12 @@ foreach($product as $p)
                                                         </div>
                                                         <div class="content">
                                                             <div class="content-left">
-                                                                <h1 class="title"><a
-                                                                        href="product-details-default.html"><?php echo $p['p_title']?>
-                                                                        </a></h1>
+                                                                <h1 class="title"><?php echo $p['p_title']?>
+                                                                        </h1>
 
 
-                                                                        <h9 class="sub-title"><a
-                                                                        href="product-details-default.html"><?php echo $p['p_description']?>
-                                                                        </a></h9>
+                                                                        <h9 class="sub-title"><?php echo $p['p_description']?>
+                                                                        </h9>
                                                                 <ul class="review-star">
                                                                     <li class="fill"><i class="ion-android-star"></i>
                                                                     </li>

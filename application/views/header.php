@@ -96,9 +96,7 @@
                                             
                                             
                                         </li>
-                                        <li>
-                                            <a href="<?php echo base_url()?>aboutus">About Us</a>
-                                        </li>
+                                      
 
                                        
                                         
@@ -109,12 +107,7 @@
 
                             <!-- Start Header Action Link -->
                             <ul class="header-action-link action-color--black action-hover-color--golden">
-                                <li>
-                                    <a href="<?php echo base_url();?>#offcanvas-wishlish" class="offcanvas-toggle">
-                                        <i class="icon-heart"></i>
-                                        <span class="item-count">3</span>
-                                    </a>
-                                </li>
+                               
                                 <li>
                                     <a href="<?php echo base_url();?>cart">
                                         <i class="icon-bag"></i>
