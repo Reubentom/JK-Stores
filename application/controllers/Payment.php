@@ -39,7 +39,7 @@ class Payment extends CI_Controller {
 	{
 	//$this->load->helper('pdf_helper');
 	$data1['user_id']=$this->session->userdata('user_id');
-	echo "hii";
+	
 
 	$data=$this->session->userdata('user_id');
 
@@ -49,20 +49,20 @@ class Payment extends CI_Controller {
 		}
 		else
 		{
-			$data['data']=$this->Datamodel->aboutuserdata($data1);
+			$d['data']=$this->Datamodel->aboutuserdata($data1);
 		
 	
 	
 	$this->Datamodel->ordersconfirmation();	
-	$data['data1']=$this->Datamodel->ordersbill('orders',$data1);
-	$data['order_date']=$this->Datamodel->ordersdate($data1);
-	$data['s_housename']=$this->db->where('user_id',$this->session->userdata('user_id'))->get('shippingdetails')->row()->s_housename;
-	$data['s_city']=$this->db->where('user_id',$this->session->userdata('user_id'))->get('shippingdetails')->row()->s_city;
-	$data['s_pincode']=$this->db->where('user_id',$this->session->userdata('user_id'))->get('shippingdetails')->row()->s_pincode;
-	$data['s_state']=$this->db->where('user_id',$this->session->userdata('user_id'))->get('shippingdetails')->row()->s_state;
+	$d['data1']=$this->Datamodel->ordersbill('orders',$data1);
+	$d['order_date']=$this->Datamodel->ordersdate($data1);
+	$d['s_housename']=$this->db->where('user_id',$this->session->userdata('user_id'))->get('shippingdetails')->row()->s_housename;
+	$d['s_city']=$this->db->where('user_id',$this->session->userdata('user_id'))->get('shippingdetails')->row()->s_city;
+	$d['s_pincode']=$this->db->where('user_id',$this->session->userdata('user_id'))->get('shippingdetails')->row()->s_pincode;
+	$d['s_state']=$this->db->where('user_id',$this->session->userdata('user_id'))->get('shippingdetails')->row()->s_state;
 
 
-	$this->load->view('paymentreciept',$data);
+	$this->load->view('paymentreciept',$d);
 		}
 	
 	}

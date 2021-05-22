@@ -11,12 +11,9 @@ class Login1 extends CI_Controller {
         parent::__construct();
 		$this->load->library('session');
     	$this->load->model('Logindatamodel');
-		$data=$this->session->userdata('user_id');
+		//$data=$this->session->userdata('user_id');
 
-		if($data==0)
-		{
-			header('location:'.base_url().'welcome/index');
-		}
+		
 		
     }
 

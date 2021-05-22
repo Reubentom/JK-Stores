@@ -12,7 +12,6 @@ class  Datamodel extends CI_Model{
 	
     public function keepincart($table,$data)
     {
-	
       $query=$this->db->query('select qty from cart where product_id="'.$data['product_id'].'"AND user_id="'.$data['user_id'].'" ');
       if($query->num_rows()>0)
       {
@@ -34,7 +33,6 @@ class  Datamodel extends CI_Model{
           }
     }
 
-
     public function showcartdetails($table)
     {
        
@@ -48,17 +46,18 @@ class  Datamodel extends CI_Model{
             //Select count(*) from table where name = @name and id = @id
            
             return $query->result_array();
-        
     }
 
 
 
     public function updateEditStatus()
     {
+
       $id=$this->session->userdata('v_id');
       $this->db->where('v_id',$id);
       $data1['p_edit_status']="Pending";
       $this->db->update('vendor',$data1);
+
     }
 
     public function deleteproductfromcart($table,$data)
@@ -256,10 +255,11 @@ class  Datamodel extends CI_Model{
 
     public function ordersbill($table,$data)
     {
-   //   $id=$this->session->userdata('user_id');
-   //  $query=$this->db->query('select order_id from orders where user_id='.$id.' and order_status="confirmed"');
+    // $id=$this->session->userdata('user_id');
+    // $query=$this->db->query('select order_id from orders where user_id='.$id.' and order_status="confirmed"');
   // $data1=$query->row()->order_id;
-  $data['order_id']=$this->session->userdata('order_no');
+ $data['order_id']=$this->session->userdata('order_no');
+    //  echo $data1;
    //  echo $data1;
     $query=$this->db->query('select products.p_description, products.p_title,products.p_cost,orderproduct.qty from(products inner join orderproduct on products.product_id=orderproduct.product_id)where orderproduct.order_no='.$data['order_id'].'');
     // foreach($query->result_array() as $row)
@@ -321,10 +321,21 @@ public function ordersconfirmation()
 {
   $id=$this->session->userdata('user_id');
 
+
+  $query=$this->db->query('select order_id from orders where user_id='.$id.' and order_status="pending"');
+  $data1=$query->row()->order_id;
+  $this->session->set_userdata('order_no',$data1);
+  
+
+
+
+
 $whereclause=array('user_id'=>$id,'order_status'=>"pending");
 $data1=array('order_status'=> "confirmed",'order_date'=>date("Y/m/d"));
 $this->db->where($whereclause);
 $this->db->update('orders',$data1);
+
+
 
 
 $where=array('user_id'=>$id);
@@ -423,6 +434,7 @@ public function get_product_det($pid)
    $data['p_imagepath']=$res->row()->p_imagepath;
    $data['p_size']=$res->row()->p_size;
    $data['p_type']=$res->row()->p_type;
+          
    // $data['p_cat']; 
     //  $data['text']="hi";
            return '
@@ -433,7 +445,7 @@ public function get_product_det($pid)
            </div>
            <div class="default-form-box mb-20">
           
-           <img src="'.$data['p_imajgepath'].'" height=400 width=300>
+           <img src="'.$data['p_imagepath'].'" height=400 width=300>
        </div>
            
            <div class="default-form-box mb-20">
@@ -610,11 +622,12 @@ public function addnewproduct($data1)
 
 public function update_product_details($data)
 {
- // $whereclause=array('user_id'=>$data['user_id'],'product_id'=>$data['product_id']);
- // $data1=array('user_id'=>$data['user_id'],'product_id'=>$data['product_id'],'qty'=>$data['qty']);
-//  $value=array('name'=>$name,'email'=>$email);
- $this->db->where('product_id',$data['product_id']);
-$this->db->update('products',$data);
+
+ //$whereclause=array('user_id'=>$data['user_id'],'product_id'=>$data['product_id']);
+  //$data1=array('user_id'=>$data['user_id'],'product_id'=>$data['product_id'],'qty'=>$data['qty']);
+  //$value=array('name'=>$name,'email'=>$email);
+  $this->db->where('product_id',$data['product_id']);
+  $this->db->update('products',$data);
 
 }
 
